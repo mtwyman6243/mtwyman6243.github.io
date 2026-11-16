@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Matthew Twyman</title>
+<meta name="description" content="Research projects by Matthew Twyman: wildfire risk MCDA, flood retention basin site selection, and goldspotted oak borer field survey.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand"><span class="mark"></span>M. TWYMAN — GIS</a>
+    <nav>
+      <button class="navtoggle" aria-label="Toggle navigation">MENU</button>
+      <ul class="navlinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:70px 0 50px;">
+  <div class="wrap">
+    <div class="hero-kicker">Applied Spatial Research</div>
+    <h1 style="font-size:clamp(2rem,4.4vw,3.1rem);">Research &amp; Project Products</h1>
+    <p class="hero-sub">Three projects spanning wildfire risk, flood mitigation, and forest health — each built around a GIS multi-criteria decision framework or a hands-on field survey, translating spatial data into recommendations for real decision-makers.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+
+    <div class="tabbar" data-tabgroup="projects">
+      <button class="tab-btn" data-tab="wfr" data-tabgroup="projects">01 · Wildfire Risk MCDA</button>
+      <button class="tab-btn" data-tab="flood" data-tabgroup="projects">02 · Retention Basin Siting</button>
+      <button class="tab-btn active" data-tab="gsob" data-tabgroup="projects">03 · GSOB Survey</button>
+    </div>
+
+    <div class="tab-panel" data-tabgroup="projects" data-tab="wfr">
+      <article class="card" style="padding:36px 32px;">
+        <span class="tag">M.S. Thesis · San Diego State University · 2025</span>
+        <h2>A Multi-Criteria Analysis Approach to Assess Wildfire Risk to Populated Areas in San Diego County</h2>
+        <p style="margin-top:14px;">Developed a GIS-based Multi-Criteria Decision Analysis (MCDA) framework to assess wildfire risk (WFR) across San Diego County by integrating three submodels: <strong>Wildfire Hazard</strong> (ignition density, live fuel moisture, vegetation, fire history), <strong>Wildfire Exposure</strong> (structure density, Wildland-Urban Interface classification), and a <strong>Social Vulnerability Index</strong> (demographic, socioeconomic, and environmental indicators). Relative weights were derived using the Analytical Hierarchy Process (AHP) and combined through weighted linear combination to produce spatially explicit risk scores, aggregated to 55 Populated Places and 13 Tribal Reservations.</p>
+        <p>Variance-based sensitivity and uncertainty analysis (Monte Carlo simulation, Sobol indices) evaluated model robustness. Results identified Boulevard and southeastern Tribal communities as areas of highest risk, with WUI classification and structure density as the strongest drivers of exposure.</p>
+        <div class="chiprow" style="margin-top:16px;">
+          <span class="chip">ArcGIS Pro</span><span class="chip">Python</span><span class="chip">AHP</span>
+          <span class="chip">Sobol Sensitivity Analysis</span><span class="chip">Monte Carlo</span>
+        </div>
+        <p style="margin-top:16px;font-size:.88rem;color:var(--ink-soft);">Funded by NASA's Equity and Environmental Justice (EEJ) Program, Award 21-EEJ21-0037, with co-authors Douglas Stow, Megan Jennings, Piotr Jankowski (SDSU) and Gernot Paulus (Carinthia University of Applied Sciences).</p>
+
+        <div class="map-block">
+          <div class="map-block-head">
+            <span>Interactive Webmap — 55 Populated Places + Raster Surfaces</span>
+            <span>Toggle Submodel &amp; Raster/Choropleth View</span>
+          </div>
+          <iframe class="map-frame" src="maps/wfr_populated_places_map.html" title="Wildfire risk MCDA webmap of San Diego County" loading="lazy"></iframe>
+        </div>
+        <p style="margin-top:14px;font-size:.86rem;color:var(--ink-soft);">Built from the four submodel GeoPackages (via <code>scripts/prepare_wfr_data.py</code>) plus the four 30 m raster surfaces (via <code>scripts/geotiff_reader.py</code> and <code>scripts/raster_to_web.py</code>, which reproject NAD83 California Albers directly to WGS84 web imagery without GDAL). Toggle "Show raster surface" to see the continuous 30 m model output beneath the place-level choropleth, and switch between Final Risk, Hazard, Exposure, and Social Vulnerability.</p>
+        <p style="margin-top:16px;"><a class="btn btn-outline" href="https://github.com/mtwyman6243/wildfire-risk-mcda" target="_blank" rel="noopener">View code &amp; data on GitHub &rarr;</a></p>
+      </article>
+    </div>
+
+    <div class="tab-panel" data-tabgroup="projects" data-tab="flood">
+      <article class="card" style="padding:36px 32px;">
+        <span class="tag">Marshall Plan Foundation Fellowship · Carinthia, Austria · 2025</span>
+        <h2>Multi-Criteria Decision Analysis for Assessment and Site Selection of Retention Basins for Flood Risk Management in Southern Austria</h2>
+        <p style="margin-top:14px;">As a Marshall Plan Fellow hosted at Carinthia University of Applied Sciences (CUAS), built and tested a GIS-based MCDA framework to optimize site selection for decentralized flood retention basins. Flood hazard, exposure, and land-suitability criteria were integrated into three submodels and aggregated with a Weighted Linear Combination into a composite Flood Mitigation Suitability (FMS) surface.</p>
+        <p>Candidate sites were derived from the FMS surface with a binary threshold and minimum-area filter, followed by carrying-capacity estimation and rank-based prioritization. Global variance-based sensitivity and uncertainty analysis (quasi-random weight perturbation, Sobol indices) found Elevation, Land Cover Type, and Soil Type most influential on site rankings. From 753 candidate polygons, 20 priority sites were identified and ranked by storage capacity potential, rank stability, and population coverage.</p>
+        <div class="chiprow" style="margin-top:16px;">
+          <span class="chip">GIS-MCDA</span><span class="chip">Weighted Linear Combination</span>
+          <span class="chip">Sensitivity &amp; Uncertainty Analysis</span><span class="chip">Site Suitability Modeling</span>
+        </div>
+        <p style="margin-top:16px;font-size:.88rem;color:var(--ink-soft);">Hosted by Dr. Gernot Paulus, Department of Geoinformation and Environmental Technologies, CUAS; supervised by Dr. Douglas Stow and Dr. Piotr Jankowski, SDSU Department of Geography.</p>
+
+        <div class="map-block">
+          <div class="map-block-head">
+            <span>Interactive Webmap — 20 Candidate Retention Basin Sites</span>
+            <span>Toggle Submodel &amp; Raster/Choropleth View</span>
+          </div>
+          <iframe class="map-frame" src="maps/austria_candidate_sites_map.html" title="Retention basin candidate sites webmap, Carinthia, Austria" loading="lazy"></iframe>
+        </div>
+        <p style="margin-top:14px;font-size:.86rem;color:var(--ink-soft);">Built from the four submodel GeoPackages (via <code>scripts/prepare_austria_data.py</code>) plus the four 1 m raster surfaces (via <code>scripts/raster_to_web.py</code>, reprojecting MGI / Austria Lambert (EPSG:31287) to WGS84 through a hand-derived Lambert Conformal Conic inverse and a 3-parameter MGI→WGS84 datum shift, since GDAL/pyproj weren't available offline). Each polygon is a candidate basin cell; popups show excavation volume, area, and all four submodel scores. Toggle "Show raster surface" to see the continuous 1 m Flood Mitigation Suitability model beneath the site outlines.</p>
+        <p style="margin-top:16px;"><a class="btn btn-outline" href="https://github.com/mtwyman6243/flood-mitigation-site-screening" target="_blank" rel="noopener">View code &amp; data on GitHub &rarr;</a></p>
+      </article>
+    </div>
+
+    <div class="tab-panel active" data-tabgroup="projects" data-tab="gsob">
+      <article class="card" style="padding:36px 32px;">
+        <span class="tag">Field Survey &amp; Technical Report · Back Country Land Trust · 2020</span>
+        <h2>Goldspotted Oak Borer Assessment — Long Potrero Preserve</h2>
+        <p style="margin-top:14px;">Led fieldwork and GIS data management for a full-preserve survey of 899 coast live oak and Engelmann oak trees at Long Potrero Preserve, evaluating infestation by the goldspotted oak borer (GSOB) — a beetle responsible for killing more than 80,000 oaks across Southern California. Each tree was tagged, geolocated, and scored across three physical indicators: crown dieback, D-shaped exit-hole density, and bark staining.</p>
+        <p>Findings showed GSOB symptoms in 349 of 899 trees (38.8%) — up from 33.2% in a 2018 baseline survey. The resulting report, co-authored with Megan King and Michael Terlep, recommended a tiered treatment plan (chop-and-solarize for the most severely infested trees, systemic insecticide or barrier spray for moderate cases) to the Back Country Land Trust.</p>
+        <div class="chiprow" style="margin-top:16px;">
+          <span class="chip">Field Data Collection</span><span class="chip">GPS/GNSS</span>
+          <span class="chip">GeoPandas</span><span class="chip">Leafmap</span>
+        </div>
+
+        <div class="map-block">
+          <div class="map-block-head">
+            <span>Interactive Webmap — 894 Geolocated Trees</span>
+            <span>Colored by Treatment Recommendation</span>
+          </div>
+          <iframe class="map-frame" src="maps/gsob_potrero_map.html" title="GSOB survey webmap of Long Potrero Preserve" loading="lazy"></iframe>
+        </div>
+        <p style="margin-top:14px;font-size:.86rem;color:var(--ink-soft);">Built from the raw tree-tag survey via <code>scripts/prepare_gsob_data.py</code> (coordinate parsing + treatment classification) and rendered with leafmap in <code>scripts/build_gsob_map.py</code>. Click any point for tree-level detail.</p>
+        <p style="margin-top:16px;"><a class="btn btn-outline" href="https://github.com/mtwyman6243/gsob-long-potrero-survey" target="_blank" rel="noopener">View code &amp; data on GitHub &rarr;</a></p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Conference Presentations</div>
+      <h2>Sharing the work</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="card">
+        <span class="tag">ITLTRF Resiliency Summit · 2024 · San Diego, CA</span>
+        <h3>Multi-criteria Analysis &amp; GIS for Wildfire Risk Assessment</h3>
+      </div>
+      <div class="card">
+        <span class="tag">Association of Pacific Coast Geographers · 2024 · Arcata, CA</span>
+        <h3>Inventory of Potential Brownfields in California</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Matthew Twyman · San Diego, CA</span>
+    <span>32.7157° N, 117.1611° W</span>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
